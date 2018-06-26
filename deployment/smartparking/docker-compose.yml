@@ -1,7 +1,7 @@
 version: "2"
 services:
     designer:
-        image: fogflow/designer
+        image: fogflow/designer:1.0
         volumes:
             - ./designer-config.json:/app/config.json                
         ports:
@@ -11,7 +11,7 @@ services:
             - discovery
             - broker
     discovery:
-        image: fogflow/discovery
+        image: fogflow/discovery:1.0
         volumes:
             - ./discovery-config.json:/config.json                        
         ports:
@@ -19,7 +19,7 @@ services:
         depends_on: 
             - postgis
     broker:
-        image: fogflow/broker
+        image: fogflow/broker:1.0
         volumes:
             - ./broker-config.json:/config.json                        
         ports:
@@ -27,7 +27,7 @@ services:
         depends_on: 
             - discovery
     master:
-        image: fogflow/master
+        image: fogflow/master:1.0
         volumes:
             - ./master-config.json:/config.json                        
         links:
@@ -39,22 +39,22 @@ services:
             - discovery
             - broker     
     worker1:
-        image: fogflow/worker
+        image: fogflow/worker:1.0
         volumes:
             - ./worker1-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker2:
-        image: fogflow/worker
+        image: fogflow/worker:1.0
         volumes:
             - ./worker2-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker3:
-        image: fogflow/worker
+        image: fogflow/worker:1.0
         volumes:
             - ./worker3-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker4:
-        image: fogflow/worker
+        image: fogflow/worker:1.0
         volumes:
             - ./worker4-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
