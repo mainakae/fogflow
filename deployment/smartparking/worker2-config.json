@@ -1,5 +1,5 @@
 {
-	"host": "broker", 
+	"host": "155.54.98.226", 
 	"discoveryURL": "http://discovery:443/ngsi9", 		
 	"message_bus": "amqp://admin:mypass@rabbitmq:5672/",  
 	"physical_location":{

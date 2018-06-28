@@ -1,25 +1,49 @@
 {
-    "myport": 443,
-    "postgresql": {
-        "dbreset": true,
-        "username": "postgres",
-        "password": "postgres",
-        "host": "postgis",
-        "port": 5432,
-        "dbname": "ngsi9",
-        "tables": [
-            "CREATE TABLE entity_tab (eid text,  type text, isPattern text, providerURL text);",
-            "CREATE TABLE attr_tab (eid text, name text, type text, isDomain text);",
-            "CREATE TABLE metadata_tab (eid text, name text, type text, value text);",
-            "CREATE TABLE geo_box_tab (eid text, name text, type text, box geometry);",
-            "CREATE TABLE geo_circle_tab (eid text, name text, type text, center geometry, radius float);"
-        ]
+    "host": "discovery", 
+    "discoveryURL": "http://discovery:443/ngsi9", 		
+    "message_bus": "amqp://guest:guest@rabbitmq:5672/",    
+	"physical_location":{
+		"longitude": 139.709059,
+		"latitude": 35.692221,
+		"section": "01",
+		"district": "02",
+		"city": "Tokyo"
+	},	
+	"logical_location": {
+		"node_no": 2,
+		"site_no": 2,	 			
+		"layer_no": 2,
+		"parent_site_no": 1
+	},    		
+	"logging":{
+		"info":"stdout",
+		"error":"stderr",
+        	"protocol": "stdout",
+        	"debug": "discard"
+	},
+    "discovery": {
+        "port": 443,
+        "postgresql": {
+            "dbreset": true,
+            "username": "postgres",
+            "password": "postgres",
+            "host": "postgis",
+            "port": 5432,
+            "dbname": "ngsi9"
+        }    
     },
-    "logging":{
-	"info":"stdout",        
-	"error":"stderr",
-        "protocol": "stdout",
-       	"debug": "stdout"
-    }
+    "broker": {
+        "port": 8070,
+        "websocket": 8090        
+    },    
+    "master": {
+        "ngsi_agent_port": 1060		    
+    },
+    "worker": {
+        "container_autoremove": false       
+    },
+    "designer": {
+        "webSrvPort": 80,
+        "agentPort": 1030               
+    }    
 }
-
