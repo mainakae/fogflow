@@ -38,21 +38,29 @@ services:
             - broker     
     worker1:
         image: fogflow/worker:1.0
+        depends_on: 
+            - rabbitmq
         volumes:
             - ./worker1-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker2:
         image: fogflow/worker:1.0
+        depends_on: 
+            - rabbitmq
         volumes:
             - ./worker2-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker3:
         image: fogflow/worker:1.0
+        depends_on: 
+            - rabbitmq
         volumes:
             - ./worker3-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    
     worker4:
         image: fogflow/worker:1.0
+        depends_on: 
+            - rabbitmq
         volumes:
             - ./worker4-config.json:/config.json                
             - /var/run/docker.sock:/var/run/docker.sock                    

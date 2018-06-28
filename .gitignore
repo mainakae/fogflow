@@ -5,4 +5,4 @@
 node_modules
 doc/en/_build/
 doc/en/source/figures/~$figures.pptx
-pyenv/
+pyvenv/
