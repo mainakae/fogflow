@@ -6,7 +6,7 @@ WORKDIR /go/src/fogflow/broker
 RUN go get
 RUN CGO_ENABLED=0 go build -a
 
-FROM scratch
+FROM alpine:3.7
 COPY --from=builder /go/src/fogflow/broker/broker ./
 #ADD config.json /
 CMD ["/broker"]

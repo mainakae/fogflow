@@ -6,7 +6,7 @@ WORKDIR /go/src/fogflow/worker
 RUN go get
 RUN CGO_ENABLED=0 go build -a
 
-FROM scratch
+FROM alpine:3.7
 COPY --from=builder /go/src/fogflow/worker/worker ./
 #ADD config.json /
 CMD ["/worker"]

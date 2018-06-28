@@ -1,7 +1,7 @@
 {
-    "host": "localhost", 
-    "discoveryURL": "http://localhost:443/ngsi9", 		
-    "message_bus": "amqp://guest:guest@localhost:5672/",    
+    "host": "broker", 
+    "discoveryURL": "http://discovery:443/ngsi9", 		
+    "message_bus": "amqp://guest:guest@rabbitmq:5672/",    
 	"physical_location":{
 		"longitude": 139.709059,
 		"latitude": 35.692221,
@@ -22,13 +22,13 @@
         	"debug": "discard"
 	},
     "discovery": {
-        "port": 8071,
+        "port": 443,
         "postgresql": {
             "dbreset": true,
             "username": "postgres",
             "password": "postgres",
-            "host": "127.0.0.1",
-            "port": 5433,
+            "host": "postgis",
+            "port": 5432,
             "dbname": "ngsi9"
         }    
     },
