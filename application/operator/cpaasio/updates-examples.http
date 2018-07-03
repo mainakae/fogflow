@@ -1,0 +1,93 @@
+
+### Public Site
+POST http://localhost:8070/ngsi10/updateContext 
+Content-Type: application/json
+Accept: application/json
+
+{
+    "contextElements": [{
+        "entityId": {
+            "id": "Aparcamiento:102",
+            "type": "Sensor"
+        },
+        "attributes": [{
+            "name": "forzado",
+            "type": "number",
+            "contextValue": 0
+        }, {
+            "name": "libres",
+            "type": "number",
+            "contextValue": 0
+        }, {
+            "name": "nombre",
+            "type": "string",
+            "contextValue": "La Vega"
+        }, {
+            "name": "plazas%20libres",
+            "type": "number",
+            "contextValue": 120
+        }, {
+            "name": "plazas%20totales",
+            "type": "number",
+            "contextValue": 312
+        }, {
+            "name": "totales",
+            "type": "number",
+            "contextValue": 312
+        }, {
+            "name": "datasource",
+            "type": "string",
+            "contextValue": "http://fiware-dev.inf.um.es:1026/v2/"
+        }],
+        "domainMetadata": [{
+            "name": "location",
+            "type": "point",
+            "value": {
+                "latitude": 37.9927151,
+                "longitude": -1.1337067
+            }
+        }]
+    }],
+    "updateAction": "UPDATE"
+}
+
+
+### Private site
+POST http://localhost:8070/ngsi10/updateContext
+Content-Type: application/json
+Accept: application/json
+
+{
+    "contextElements": [{
+        "entityId": {
+            "id": "Sector:6",
+            "type": "Sector"
+        },
+        "attributes": [{
+            "name": "capacidad",
+            "type": "int",
+            "contextValue": 299
+        }, {
+            "name": "libres",
+            "type": "int",
+            "contextValue": 40
+        },{
+            "name": "datasource",
+            "type": "string",
+            "contextValue": "http://fiware-dev.inf.um.es:1026/v2/"
+        }],
+        "domainMetadata": [{
+            "name": "location",
+            "type": "point",
+            "value": {
+                "latitude": 37.982636,
+                "longitude": -1.123510
+            }
+        }]
+    }],
+    "updateAction": "UPDATE"
+}
+
+### Get and eso
+GET http://localhost:8070/ngsi10/entity
+accept: application/json
