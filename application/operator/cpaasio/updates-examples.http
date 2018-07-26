@@ -91,3 +91,8 @@ Accept: application/json
 ### Get and eso
 GET http://localhost:8070/ngsi10/entity
 accept: application/json
+
+
+### Get and eso
+GET http://localhost:8070/ngsi10/subscription
+accept: application/json

@@ -18,50 +18,41 @@ var recommendedParkingSite = null;
 var carMarker = null;
 
 var privateParkingSites = [
-{
-    id: "001",
-    location: {
-        latitude: 37.997849,
-        longitude: -1.124129
-    },
-    iconURL: "/img/parkingsite.png",    
-    datasource: "http://fiware-dev.inf.um.es:1026/v2/"
-},{
-    id: "002",
-    location: {
-        latitude: 37.991524, 
-        longitude: -1.115503
-    },
-    iconURL: "/img/parkingsite.png",        
-    datasource: "http://fiware-dev.inf.um.es:1026/v2/"
-},{
-    id: "003",
-    location: {
-        latitude: 37.986957, 
-        longitude: -1.128292
-    },
-    iconURL: "/img/parkingsite.png",        
-    datasource: "http://fiware-dev.inf.um.es:1026/v2/"
-}];
+    {
+        entityId: {
+            id: "Twin.ParkingSite.Aparcamiento:102",
+            type: "Sensor"
+        },
+        attributes: {
+            forzado: { type: "number", value: 0 },
+            libres: { type: "number", value: 0 },
+            nombre: { type: "string", value: "La Vega" },
+            'plazas libres': { type: "number", value: 120 },
+            'plazas totales': { type: "number", value: 312 },
+            iconURL: { type: "string", value: "/img/parkingsite.png"},
+            datasource: { type: "string", value: "http://fiware-dev.inf.um.es:1026/v2/" }
+        },
+        metadata: {
+            location: { type: "point", value: { latitude: 37.9927151, longitude: -1.1337067 } }
+        }
+    }];
 
 var publicParkingSites = [
-{
-    id: "006",
-    location: {
-        latitude: 38.000011, 
-        longitude: -1.128464
-    },
-    iconURL: "/img/parkingsite.png",        
-    datasource: "http://fiware-dev.inf.um.es:1026/v2/"
-},{
-    id: "007",
-    location: {
-        latitude: 38.009850, 
-        longitude:  -1.142369
-    },
-    iconURL: "/img/parkingsite.png",        
-    datasource: "http://fiware-dev.inf.um.es:1026/v2/"
-}];
+    {
+        entityId: {
+            id: "Twin.ParkingSite.Sector:6",
+            type: "Sector"
+        },
+        attributes: {
+            forcapacidadzado: { type: "number", value: 299 },
+            libres: { type: "number", value: 40 },
+            iconURL: { type: "string", value: "/img/parkingsite.png"},
+            datasource: { type: "string", value: "http://fiware-dev.inf.um.es:1026/v2/" }
+        },
+        metadata: {
+            location: { type: "point", value: { latitude: 37.982636, longitude: -1.123510 } }
+        }
+    }];
 
 
 
@@ -155,40 +146,23 @@ function initParkingSite()
     // for private parking sites
     for(var i=0; i<privateParkingSites.length; i++) {
         var privatesite = privateParkingSites[i];
-        createParkingSiteEntity(privatesite, "PrivateSite");
+        createParkingSiteEntity(privatesite);
     }    
     
     // for public parking sites    
     for(var i=0; i<publicParkingSites.length; i++) {
         var publicsite = publicParkingSites[i];
-        createParkingSiteEntity(publicsite, "PublicSite");        
+        createParkingSiteEntity(publicsite);        
     }           
 }
 
-function createParkingSiteEntity(site, siteType)
-{        
-    var siteEntity = {};
-    
-    siteEntity.entityId = {
-        id : 'Twin.ParkingSite.' + site.id, 
-        type: siteType,
-        isPattern: false
-    };
-    
-    siteEntity.attributes = {};   
-    siteEntity.attributes.iconURL = {type: 'string', value: site.iconURL};    
-    siteEntity.attributes.datasource = {type: 'string', value: site.datasource};
-    
-    siteEntity.metadata = {};	
-    siteEntity.metadata.location = {
-        type:'point',
-        value: site.location
-    };
-    
+function createParkingSiteEntity(siteEntity)
+{     
     client.updateContext(siteEntity).then( function(data) {
         console.log(data);                
     }).catch( function(error) {
         console.log('failed to create a parking site entity');
+        console.log(error);
     });           
 }
 

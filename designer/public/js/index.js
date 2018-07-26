@@ -725,18 +725,18 @@ function initDockerImageList()
         operatorName: "recommender",
         prefetched: false
     },{
-        name: "fogflow/privatesite",
+        name: "fogflow/privatesiteodins",
         tag: "latest",
         hwType: "X86",
         osType: "Linux",
-        operatorName: "privatesite",
+        operatorName: "privatesiteodins",
         prefetched: false
     },{
-        name: "fogflow/publicsite",
+        name: "fogflow/publicsiteodins",
         tag: "latest",
         hwType: "X86",
         osType: "Linux",
-        operatorName: "publicsite",
+        operatorName: "publicsiteodins",
         prefetched: false
     }
     ];
